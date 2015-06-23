@@ -6,7 +6,7 @@ class Job < ActiveRecord::Base
 
 
     def self.picked?(seeker)
-	 where(job_type: seeker.job_type).includes(:matches).where(matches: {user_accept: nil, job_accept:nil})
+	where(job_type: seeker.job_type).includes(:matches).where.not(matches: {user_id: seeker.id, user_accept: true}).where.not(matches: {user_id: seeker.id, user_accept: false})
     end
 
   	def matched_seekers

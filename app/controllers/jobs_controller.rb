@@ -21,7 +21,7 @@ class JobsController < ApplicationController
     if (@match==nil)
       @seeker = Seeker.picked?(@job).first
     else 
-      @seeker = @match.job
+      @seeker = @match.seeker
     end
   end
   
